@@ -22,7 +22,7 @@ endif()
 
 # ############
 # Define Project
-project(itertools VERSION 1.2.0 LANGUAGES C CXX)
+project(itertools VERSION 1.2.0 LANGUAGES CXX)
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 # Get the git hash & print status
