@@ -24,10 +24,8 @@ static void loop_range(benchmark::State &state) {
   long b = 1 << state.range(0);
   long s = state.range(1);
 
-  for (auto _ : state){
-    for (auto i: range(a, b, s)){
-      benchmark::ClobberMemory();
-    }
+  for (auto _ : state) {
+    for (auto i : range(a, b, s)) { benchmark::ClobberMemory(); }
   }
 }
 BENCHMARK(loop_range)->ArgsProduct({{10, 20}, {1, 5}});
@@ -39,10 +37,8 @@ static void loop_bare(benchmark::State &state) {
   long b = 1 << state.range(0);
   long s = state.range(1);
 
-  for (auto _ : state){
-    for (auto i = a; i < b; i += s) {
-      benchmark::ClobberMemory();
-    }
+  for (auto _ : state) {
+    for (auto i = a; i < b; i += s) { benchmark::ClobberMemory(); }
   }
 }
 BENCHMARK(loop_bare)->ArgsProduct({{10, 20}, {1, 5}});

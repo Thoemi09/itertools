@@ -23,10 +23,8 @@ static void multi_loop_product(benchmark::State &state) {
   long a = 1 << state.range(0);
   long b = 1 << state.range(1);
 
-  for (auto _ : state){
-    for (auto [i, j]: product_range(a, b)){
-      benchmark::ClobberMemory();
-    }
+  for (auto _ : state) {
+    for (auto [i, j] : product_range(a, b)) { benchmark::ClobberMemory(); }
   }
 }
 BENCHMARK(multi_loop_product)->ArgsProduct({{8, 10}, {8, 10}});
@@ -37,11 +35,9 @@ static void multi_loop_bare(benchmark::State &state) {
   long a = 1 << state.range(0);
   long b = 1 << state.range(1);
 
-  for (auto _ : state){
+  for (auto _ : state) {
     for (auto i = 0; i < a; ++i) {
-      for (auto j = 0; j < b; ++j) {
-        benchmark::ClobberMemory();
-      }
+      for (auto j = 0; j < b; ++j) { benchmark::ClobberMemory(); }
     }
   }
 }
